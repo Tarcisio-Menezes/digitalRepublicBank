@@ -25,6 +25,22 @@ const cashTransference = async (originCpf, destinyCpf, quantity) => {
   } return ({ error: { code: 'invalidCpf' } });
 };
 
+const cashDeposit = async (destinyCpf, quantity) => {
+  const deposit = await servicesAccount.cashDeposit(destinyCpf, quantity);
+  if (!deposit.error) {
+    const destinyAccount = await servicesAccount.searchAccountByCpf(destinyCpf);
+    return Transaction.create({
+      date: dateGenerator(),
+      originAccountId: 'Caixa eletrônico Digital Republic Bank',
+      destinyAccountId: destinyAccount.id,
+      originCpf: 'DigitalRepublicBankCNPJ',
+      destinyCpf: destinyAccount.cpf,
+      quantity,
+    });
+  } return deposit.error;
+};
+
 module.exports = {
   cashTransference,
+  cashDeposit,
 };

@@ -17,6 +17,21 @@ const cashTranference = rescue(async (req, res, next) => {
   return res.status(200).json(transference);
 });
 
+const cashDeposit = rescue(async (req, res, next) => {
+  const { error } = joi.object({
+    destinyCpf: joi.string().required(),
+    quantity: joi.number(),
+  }).validate(req.body);
+
+  if (error) return next(error);
+  const { destinyCpf, quantity } = req.body;
+
+  const deposit = await service.cashDeposit(destinyCpf, quantity);
+  if (deposit.error) return next(deposit.error);
+  res.status(200).json(deposit);
+});
+
 module.exports = {
   cashTranference,
+  cashDeposit,
 };
