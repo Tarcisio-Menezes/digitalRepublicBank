@@ -25,7 +25,15 @@ const accountRegister = rescue(async (req, res, next) => {
   res.status(201).json(register);
 });
 
+const searchAccountByFullName = rescue(async (req, res, next) => {
+  const { fullName } = req.params;
+  const search = await service.searchAccountByFullName(fullName);
+  if (search.error) return next(search.error);
+  return res.status(200).json(search);
+});
+
 module.exports = {
   searchAccountById,
   accountRegister,
+  searchAccountByFullName,
 };

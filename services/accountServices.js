@@ -33,7 +33,7 @@ const accountRegister = async (fullName, cpf, balance) => {
 
 const searchAccountByFullName = async (likeaname) => {
   const search = await Account.findAll({ where: 
-    { fullName: { [Op.like]: `%${likeaname}%` } },
+    { fullName: { [Op.like]: likeaname } },
   });
   if (search) return search;
   return ({
