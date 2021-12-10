@@ -1,3 +1,4 @@
+const { Op } = require('sequelize');
 const { Account } = require('../models');
 const utils = require('../utils/validators');
 
@@ -30,7 +31,18 @@ const accountRegister = async (fullName, cpf, balance) => {
   });
 };
 
+const searchAccountByFullName = async (likeaname) => {
+  const search = await Account.findAll({ where: 
+    { fullName: { [Op.like]: `%${likeaname}%` } },
+  });
+  if (search) return search;
+  return ({
+    error: { code: 'invalidId' },
+  });
+};
+
 module.exports = {
   searchAccountById,
   accountRegister,
+  searchAccountByFullName,
 };
