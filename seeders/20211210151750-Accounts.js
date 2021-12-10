@@ -21,7 +21,7 @@ module.exports = {
         },
         {
           full_name: 'Maria Antonieta de las Nieves',
-          cpf: '42993689835',
+          cpf: '45913389230',
           ballance: 60000000,
         },
       ],
@@ -30,6 +30,6 @@ module.exports = {
   },
 
   down: async (queryInterface, _Sequelize) => {
-    return queryInterface.bulkDelete('Employees', null, {});
+    return queryInterface.bulkDelete('Accounts', null, {});
   },
 };
