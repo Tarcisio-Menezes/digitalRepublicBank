@@ -62,14 +62,14 @@ const cashTransference = async (originCpf, destinyCpf, quantity) => {
 };
 
 const cashDeposit = async (destinyCpf, quantity) => {
-  const destinyAccount = searchAccountByCpf(destinyCpf);
+  const destinyAccount = await searchAccountByCpf(destinyCpf);
   if (destinyAccount) {
     const { fullName, cpf } = destinyAccount;
     return Account.update({
       fullName,
       cpf,
       balance: destinyAccount.balance + quantity,
-    });
+    }, { where: { cpf: destinyCpf } });
   } return ({
      error: { code: 'invalidCpf' },
   });

@@ -1,4 +1,4 @@
-module.exports = (err, _req, res, _next) => {
+module.exports = (err, _req, res, next) => {
   if (err.isJoi) return res.status(400).json({ message: err.details[0].message });
 
   if (err.code === 'insuficientCash') {
@@ -12,6 +12,6 @@ module.exports = (err, _req, res, _next) => {
   if (err.code === 'limitTransfer') {
     return res.status(401).json({ message: 'Limit of tranferences is R$: 2000' });
   }
-
-  return res.status(500).json({ message: 'Critical Error :(' });
+  
+  return next(err);
 };

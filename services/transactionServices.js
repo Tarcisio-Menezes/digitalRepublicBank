@@ -26,12 +26,14 @@ const cashTransference = async (originCpf, destinyCpf, quantity) => {
 };
 
 const cashDeposit = async (destinyCpf, quantity) => {
+  if (quantity < 0) return ({ error: { code: 'depositOnly' } });
+  if (quantity > maxTransferQuantity) return ({ error: { code: 'limitTransfer' } });
   const deposit = await servicesAccount.cashDeposit(destinyCpf, quantity);
   if (!deposit.error) {
     const destinyAccount = await servicesAccount.searchAccountByCpf(destinyCpf);
     return Transaction.create({
       date: dateGenerator(),
-      originAccountId: 'Caixa eletrônico Digital Republic Bank',
+      originAccountId: 5050,
       destinyAccountId: destinyAccount.id,
       originCpf: 'DigitalRepublicBankCNPJ',
       destinyCpf: destinyAccount.cpf,
