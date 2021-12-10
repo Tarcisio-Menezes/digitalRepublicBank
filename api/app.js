@@ -3,6 +3,8 @@ const cors = require('cors');
 const accountRoutes = require('../routes/accountRoutes');
 const accountMiddleware = require('../middlewares/accountMiddlewares');
 const transactionRoutes = require('../routes/transactionRoutes');
+const transactionMiddleware = require('../middlewares/transactionMiddlewares');
+const transactionMiddlewares = require('../middlewares/transactionMiddlewares');
 
 const app = express();
 
@@ -15,5 +17,6 @@ app.use(accountRoutes);
 app.use(accountMiddleware);
 
 app.use(transactionRoutes);
+app.use(transactionMiddlewares);
 
 module.exports = app;
