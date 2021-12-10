@@ -41,8 +41,29 @@ const searchAccountByFullName = async (likeaname) => {
   });
 };
 
+const cashDeposit = async (originCpf, destinyCpf, quantity) => {
+  const originAccount = await searchAccountByCpf(originCpf);
+  const destinyAccount = await searchAccountByCpf(destinyCpf);
+  if (originAccount.balance - quantity >= 0) {
+    await Account.update({
+      fullName: originAccount.fullName,
+      cpf: originCpf,
+      balance: originAccount.balance - quantity,
+     }, { where: { cpf: originCpf } });
+    await Account.update({
+      fullName: destinyAccount.fullName,
+      cpf: destinyCpf,
+      balance: destinyAccount.balance + quantity,
+    }, { where: { cpf: destinyCpf } });
+  } return ({
+      error: { code: 'insuficientCash' },
+  });
+};
+
 module.exports = {
   searchAccountById,
+  searchAccountByCpf,
   accountRegister,
   searchAccountByFullName,
+  cashDeposit,
 };
