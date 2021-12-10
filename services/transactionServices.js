@@ -21,7 +21,7 @@ const cashTransference = async (originCpf, destinyCpf, quantity) => {
         destinyCpf: destinyAccount.cpf,
         quantity,
       });
-    } return ({ error: { code: 'insuficientCash' } });
+    } return ({ error: { code: transference.error.code } });
   } return ({ error: { code: 'invalidCpf' } });
 };
 

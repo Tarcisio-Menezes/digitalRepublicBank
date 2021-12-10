@@ -42,6 +42,7 @@ const searchAccountByFullName = async (likeaname) => {
 };
 
 const cashTransference = async (originCpf, destinyCpf, quantity) => {
+  if (quantity < 0) return ({ error: { code: 'depositOnly' } });
   const originAccount = await searchAccountByCpf(originCpf);
   const destinyAccount = await searchAccountByCpf(destinyCpf);
   if (originAccount.balance - quantity >= 0) {
