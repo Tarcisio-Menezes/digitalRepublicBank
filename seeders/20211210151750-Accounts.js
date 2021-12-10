@@ -7,22 +7,22 @@ module.exports = {
         {
           full_name: 'Tarcísio Digital Republic Lover',
           cpf: '42993689835',
-          ballance: 15.65,
+          balance: 15.65,
         },
         {
           full_name: 'Ramón Valdez',
           cpf: '31882558724',
-          ballance: 50000000,
+          balance: 50000000,
         },
         {
           full_name: 'Roberto Bolanhõs',
           cpf: '98657441323',
-          ballance: 49000000,
+          balance: 49000000,
         },
         {
           full_name: 'Maria Antonieta de las Nieves',
           cpf: '45913389230',
-          ballance: 60000000,
+          balance: 60000000,
         },
       ],
       {},
