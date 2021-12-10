@@ -1,4 +1,4 @@
-// const joi = require('joi');
+const joi = require('joi');
 const rescue = require('express-rescue');
 const service = require('../services/accountServices');
 
@@ -9,6 +9,23 @@ const searchAccountById = rescue(async (req, res, next) => {
   return res.status(200).json(account);
 });
 
+const accountRegister = rescue(async (req, res, next) => {
+  const { error } = joi.object({
+    fullName: joi.string().required(),
+    cpf: joi.string().required(),
+    balance: joi.double(),
+  }).validate(req.body);
+
+  if (error) return next(error);
+
+  const { fullName, cpf, balance } = req.body;
+
+  const register = await service.accountRegister(fullName, cpf, balance || 0);
+  if (register.error) return next(register.error);
+  res.status(201).json(register);
+});
+
 module.exports = {
   searchAccountById,
+  accountRegister,
 };
