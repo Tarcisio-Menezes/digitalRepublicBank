@@ -8,7 +8,19 @@ const isValidName = (name) => {
   return false;
 };
 
+const dateGenerator = () => {
+  const date = new Date();
+  const day = (`0${date.getDate()}`).toString();
+  const month = (date.getMonth() + 1).toString();
+  const year = date.getFullYear();
+  const hour = date.getHours();
+  const min = date.getMinutes();
+  const seg = date.getSeconds();
+  return `${day}-${month}-${year} ${hour}:${min}:${seg}`;
+};
+
 module.exports = {
   isValidCpf,
   isValidName,
+  dateGenerator,
 };
