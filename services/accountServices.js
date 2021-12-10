@@ -44,7 +44,8 @@ const searchAccountByFullName = async (likeaname) => {
 const cashDeposit = async (originCpf, destinyCpf, quantity) => {
   const originAccount = await searchAccountByCpf(originCpf);
   const destinyAccount = await searchAccountByCpf(destinyCpf);
-  if (originAccount.balance - quantity >= 0) {
+  const maxQuantity = 2000;
+  if (quantity <= maxQuantity && originAccount.balance - quantity >= 0) {
     await Account.update({
       fullName: originAccount.fullName,
       cpf: originCpf,
