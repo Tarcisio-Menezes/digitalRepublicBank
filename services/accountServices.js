@@ -57,7 +57,21 @@ const cashTransference = async (originCpf, destinyCpf, quantity) => {
       balance: destinyAccount.balance + quantity,
     }, { where: { cpf: destinyCpf } });
   } return ({
-      error: { code: 'insuficientCash' },
+      error: { code: 'insuficientCashOrInvalidCpfs' },
+  });
+};
+
+const cashDeposit = async (destinyCpf, quantity) => {
+  const destinyAccount = searchAccountByCpf(destinyCpf);
+  if (destinyAccount) {
+    const { fullName, cpf } = destinyAccount;
+    return Account.update({
+      fullName,
+      cpf,
+      balance: destinyAccount.balance + quantity,
+    });
+  } return ({
+     error: { code: 'insuficientCashOrInvalidCpfs' },
   });
 };
 
@@ -67,4 +81,5 @@ module.exports = {
   accountRegister,
   searchAccountByFullName,
   cashTransference,
+  cashDeposit,
 };
