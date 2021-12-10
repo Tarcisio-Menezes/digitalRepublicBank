@@ -57,7 +57,7 @@ const cashTransference = async (originCpf, destinyCpf, quantity) => {
       balance: destinyAccount.balance + quantity,
     }, { where: { cpf: destinyCpf } });
   } return ({
-      error: { code: 'insuficientCashOrInvalidCpfs' },
+      error: { code: 'insuficientCash' },
   });
 };
 
@@ -71,7 +71,7 @@ const cashDeposit = async (destinyCpf, quantity) => {
       balance: destinyAccount.balance + quantity,
     });
   } return ({
-     error: { code: 'insuficientCashOrInvalidCpfs' },
+     error: { code: 'invalidCpf' },
   });
 };
 
