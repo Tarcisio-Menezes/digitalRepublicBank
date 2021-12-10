@@ -41,7 +41,7 @@ const searchAccountByFullName = async (likeaname) => {
   });
 };
 
-const cashDeposit = async (originCpf, destinyCpf, quantity) => {
+const cashTransference = async (originCpf, destinyCpf, quantity) => {
   const originAccount = await searchAccountByCpf(originCpf);
   const destinyAccount = await searchAccountByCpf(destinyCpf);
   const maxQuantity = 2000;
@@ -66,5 +66,5 @@ module.exports = {
   searchAccountByCpf,
   accountRegister,
   searchAccountByFullName,
-  cashDeposit,
+  cashTransference,
 };
