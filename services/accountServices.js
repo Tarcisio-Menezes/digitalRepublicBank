@@ -16,7 +16,8 @@ const searchAccountByCpf = async (cpf) => {
 };
 
 const accountRegister = async (fullName, cpf, balance) => {
-  if (searchAccountByCpf(cpf)) {
+  const accountExist = await searchAccountByCpf(cpf);
+  if (accountExist) {
     return ({
       error: { code: 'accountAlreadyExists' },
     });

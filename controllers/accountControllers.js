@@ -13,7 +13,7 @@ const accountRegister = rescue(async (req, res, next) => {
   const { error } = joi.object({
     fullName: joi.string().required(),
     cpf: joi.string().required(),
-    balance: joi.double(),
+    balance: joi.number(),
   }).validate(req.body);
 
   if (error) return next(error);
