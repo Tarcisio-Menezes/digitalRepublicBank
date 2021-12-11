@@ -39,7 +39,7 @@ const cashDeposit = async (destinyCpf, quantity) => {
       destinyCpf: destinyAccount.cpf,
       quantity,
     });
-  } return deposit.error;
+  } return deposit;
 };
 
 const getAllTransference = async () => Transaction.findAll();

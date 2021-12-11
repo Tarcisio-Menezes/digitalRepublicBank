@@ -5,9 +5,9 @@ module.exports = {
     return queryInterface.bulkInsert('Accounts',
       [
         {
-          full_name: 'Tarcísio Digital Republic Lover',
-          cpf: '42993689835',
-          balance: 15.65,
+          full_name: 'Pernalonga Roedor',
+          cpf: '12368742697',
+          balance: 0,
         },
         {
           full_name: 'Ramón Valdez',
@@ -15,9 +15,9 @@ module.exports = {
           balance: 50000000,
         },
         {
-          full_name: 'Roberto Bolanhõs',
-          cpf: '98657441323',
-          balance: 49000000,
+          full_name: 'Tarcísio Digital Republic Lover',
+          cpf: '42993689835',
+          balance: 15.65,
         },
         {
           full_name: 'Maria Antonieta de las Nieves',
