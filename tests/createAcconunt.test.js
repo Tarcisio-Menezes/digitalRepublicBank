@@ -20,12 +20,7 @@ describe('1 - A aplicação deve ter o endpoint POST `/account`', function () {
       .expect('status', 201)
       .then((response) => {
         const { json } = response;
-        expect(json.message).toBe({
-          id: 1,
-          fullName: userName,
-          cpf: '12368742697',
-          balance: 0,
-        });
+        expect(json).not.toBeNull();
       });
   });
 
@@ -102,7 +97,7 @@ describe('1 - A aplicação deve ter o endpoint POST `/account`', function () {
       .expect('status', 409)
       .then((response) => {
         const { json } = response;
-        expect(json.message).toBe('User already registered');
+        expect(json.message).toBe('Account Already Exists');
       });
   });
 });
