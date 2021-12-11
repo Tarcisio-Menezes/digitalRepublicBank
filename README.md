@@ -39,13 +39,13 @@ Para executar esta aplicação você precisa ter uma versão do Node.js e do MyS
 
 Vamos começar pelas rotas disponíveis:
 
--[GET `/account`](#listar-contas-cadastradas)
--[GET `/transaction`](#listar-transações-realizadas)
--[GET `/account/id`](#encontrar-conta-pelo-id-(número-da-conta))
--[GET `/account/fullName`](#encontrar-conta-pelo-nome-do-cliente)
--[POST `/account`](#cadastrar-nova-conta)
--[POST `/transaction`](#realizar-uma-transferência-entre-contas)
--[POST `transaction/deposit`](#realizar-um-deposito-utilizando-um-terminal-do-Digital-Republic-Bank)
+- [GET `/account`](#listar-contas-cadastradas)
+- [GET `/transaction`](#listar-transações-realizadas)
+- [GET `/account/id`](#encontrar-conta-pelo-id-(número-da-conta))
+- [GET `/account/fullName`](#encontrar-conta-pelo-nome-do-cliente)
+- [POST `/account`](#cadastrar-nova-conta)
+- [POST `/transaction`](#realizar-uma-transferência-entre-contas)
+- [POST `transaction/deposit`](#realizar-um-deposito-utilizando-um-terminal-do-Digital-Republic-Bank)
 
 
 ## Listar contas cadastradas
@@ -264,6 +264,13 @@ Caso o valor do deposito seja superior a 2000 reais:
 ```json
 {
   "message": "Limit of tranferences is R$: 2000"
+}
+```
+Caso o valor do deposito seja negativo:
+
+```json
+{
+  "message": "Deposit Only!"
 }
 ```
 
