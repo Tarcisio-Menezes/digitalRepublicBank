@@ -42,7 +42,10 @@ const cashDeposit = async (destinyCpf, quantity) => {
   } return deposit.error;
 };
 
+const getAllTransference = async () => Transaction.findAll();
+
 module.exports = {
   cashTransference,
   cashDeposit,
+  getAllTransference,
 };
