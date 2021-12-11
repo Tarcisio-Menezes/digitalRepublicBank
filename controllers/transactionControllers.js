@@ -31,7 +31,14 @@ const cashDeposit = rescue(async (req, res, next) => {
   res.status(200).json(deposit);
 });
 
+const getAllTransactions = rescue(async (req, res, next) => {
+  const getAll = await service.getAllTransference();
+  if (getAll.error) return next(getAll.error);
+  return res.status(200).json(getAll);
+});
+
 module.exports = {
   cashTranference,
   cashDeposit,
+  getAllTransactions,
 };
