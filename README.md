@@ -39,13 +39,13 @@ Para executar esta aplicação você precisa ter uma versão do Node.js e do MyS
 
 Vamos começar pelas rotas disponíveis:
 
--[GET `/account`](##listar-contas-cadastradas)
--[GET `/transaction`](##listar-transações-realizadas)
--[GET `/account/id`](##encontrar-conta-pelo-id-(número-da-conta))
--[GET `/account/fullName`](##encontrar-conta-pelo-nome-do-cliente)
--[POST `/account`](##cadastrar-nova-conta)
--[POST `/transaction`](##realizar-uma-transferência-entre-contas)
--[POST `transaction/deposit`](##realizar-um-deposito-utilizando-um-terminal-do-Digital-Republic-Bank)
+-[GET `/account`](#listar-contas-cadastradas)
+-[GET `/transaction`](#listar-transações-realizadas)
+-[GET `/account/id`](#encontrar-conta-pelo-id-(número-da-conta))
+-[GET `/account/fullName`](#encontrar-conta-pelo-nome-do-cliente)
+-[POST `/account`](#cadastrar-nova-conta)
+-[POST `/transaction`](#realizar-uma-transferência-entre-contas)
+-[POST `transaction/deposit`](#realizar-um-deposito-utilizando-um-terminal-do-Digital-Republic-Bank)
 
 
 ## Listar contas cadastradas
@@ -82,7 +82,7 @@ Vamos começar pelas rotas disponíveis:
 Caso não existam contas ativas no sistema a aplicação retornará um array vazio.
 
 ## Listar transações realizadas
-    Para listar todas as transações e depositos realizados no sistema Digital Republic Bank faça uma requisição do tipo `GET` para `http://localhost:3000/transaction`. Caso você não esteja utilizando localhost, substistua pelo seu endereço customizado. O resultado da requisição será um array de objetos contendo as movimentações realizadas:
+  Para listar todas as transações e depositos realizados no sistema Digital Republic Bank faça uma requisição do tipo `GET` para `http://localhost:3000/transaction`. Caso você não esteja utilizando localhost, substistua pelo seu endereço customizado. O resultado da requisição será um array de objetos contendo as movimentações realizadas:
 
 ```json
 [
@@ -270,4 +270,6 @@ Caso o valor do deposito seja superior a 2000 reais:
 ---
 
 #Obrigado por utilizar o sistema Digital Republic Bank
+
+---
 Divirta-se :)
