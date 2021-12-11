@@ -76,6 +76,8 @@ const cashDeposit = async (destinyCpf, quantity) => {
   });
 };
 
+const getAllAccount = async () => Account.findAll();
+
 module.exports = {
   searchAccountById,
   searchAccountByCpf,
@@ -83,4 +85,5 @@ module.exports = {
   searchAccountByFullName,
   cashTransference,
   cashDeposit,
+  getAllAccount,
 };
