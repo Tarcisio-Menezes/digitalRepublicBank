@@ -20,7 +20,10 @@ describe('1 - A aplicação deve ter o endpoint POST `/account`', function () {
       .expect('status', 201)
       .then((response) => {
         const { json } = response;
-        expect(json).not.toBeNull();
+        expect(json.fullName).toBe(userName);
+        expect(json.cpf).toBe('12368742697');
+        expect(json.balance).toBe(0);
+        expect(json.id).toBe(1);
       });
   });
 
